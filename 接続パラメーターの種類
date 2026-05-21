@@ -1,0 +1,33 @@
+認証系
+authSource: ユーザー認証を保存するデータベース authSource=admin ユーザーは管理者です
+接続系
+replicaSet: レプリカセット名        replicaSet=aaa aaaという名前です
+tls / ssl: true に設定して TLS/SSL 通信を有効 tls=true TLS通信を有効にします
+directConnection: true にすると、ホスト指定したノードに直接接続 
+接続プール　タイムアウト
+maxPoolSize: 接続プールの最大サイズ maxPoolSize:5 5個まで保存できる minPoolSize より大きい値で設定する必要がある
+minPoolSize: 接続プールの最小サイズ minPoolSize:5 5個から保存できる maxPoolSize より小さい値で設定する必要がある
+connectTimeoutMS: 接続試行がタイムアウトするまでの時間（ミリ秒）connectTimeoutMS:5 5ミリ秒以内に接続できなかったら接続失敗
+socketTimeoutMS: ソケット接続がタイムアウトするまでの時間（ミリ秒） socketTimeoutMS:5 データが5ミリ秒以内に送受信できなかったら失敗
+書き込み　読み取り系
+w: 書込み保証
+    1  プライマリデータベースに書込みが反映された時点で完了とみなします。
+    "majority" 投票権を持つ全インスタンスの過半数に書込みが反映されたことを確認します。データの永続性を優先する場合に推奨されます。
+    <数字>: 指定した数のノードに書込みが反映されるまで待ちます。
+    0: 書込みの成功を確認せず、高速ですがデータ消失のリスクがあります。
+readPreference: 読取りの優先ノード
+    primary 全ての読み取りがプライマリノードで行われます
+    primaryPreferred プライマリが利用可能な場合はプライマリ、そうでない場合はセカンダリから読み込みます
+    secondary: 読み取り操作はセカンダリノードからのみ行います
+    secondaryPreferred: セカンダリから読み込みますが、セカンダリがダウンしている場合はプライマリからも読み込みます
+    nearest: ネットワーク遅延が最も小さいノード（プライマリまたはセカンダリ）から読み込みます
+
+localhost:3000/〇〇?authSource=〇&replicaSet=〇のような形で使用する
+
+
+レシピ＝[料理名,[[材料名,量]、[材料名,量]],[[1(手順),調理方法],[2(手順),調理方法]]]
+Recipe{
+        recipeName=String
+        ingredients=[[String,Intiger],[String,Intiger].....]
+        order=[[Intiger,String],[Intiger,String]....]
+        }
