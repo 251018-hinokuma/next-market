@@ -10,6 +10,7 @@ const getAllItems = async() => {
 }
 
 const ReadAllItems = async() => {
+    
     const allItems = await getAllItems()
     return (
         <div className="grid-container-in">
