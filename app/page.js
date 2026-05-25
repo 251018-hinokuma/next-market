@@ -3,14 +3,14 @@ import Image from "next/image"
 import Header from "./components/header"
 import Footer from "./components/footer"
 const getAllItems = async() => {
-    const response = await fetch("${process.env.NEXT_PUBLIC_URL}/api/item/readall", {cache: "no-store"})
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/item/readall`, {cache: "no-store"})
     const jsonData = await response.json()
     const allItems = jsonData.allItems
     return allItems
 }
 
 const ReadAllItems = async() => {
-    
+
     const allItems = await getAllItems()
     return (
         <div className="grid-container-in">
